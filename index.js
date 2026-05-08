@@ -2,7 +2,7 @@ const express = require ("express")
 
 const app = express()
 
-const data = [
+let data = [
     { 
       "id": "1",
       "name": "Arto Hellas", 
@@ -49,6 +49,14 @@ app.get("/api/persons/:id",(request,response) => {
     }else{
         response.status(404).end()
     }
+})
+
+app.delete("/api/persons/:id",(request,response)=>{
+
+    const id = request.params.id
+     data = data.filter((item) => item.id !== id)
+
+    response.status(204).end()
 })
 
 const Port = 3001 
