@@ -38,6 +38,19 @@ app.get("/info",(request,response) => {
   `))
 })
 
+app.get("/api/persons/:id",(request,response) => {
+
+    const id = request.params.id
+    const datas = data.find((item) => item.id === id)
+
+    if (datas){
+        response.json(datas)
+
+    }else{
+        response.status(404).end()
+    }
+})
+
 const Port = 3001 
 
 app.listen(Port,() => {
